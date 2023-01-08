@@ -65,7 +65,7 @@ namespace PropertyManager.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateProperty(Guid id, [FromBody] PropertyDTO property)
+        public IActionResult UpdateProperty(int id, [FromBody] PropertyDTO property)
         {
             if (property == null)
             {
@@ -97,7 +97,7 @@ namespace PropertyManager.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteProperty(Guid id)
+        public IActionResult DeleteProperty(int id)
         {
             var propertyToDelete = _context.Properties.FirstOrDefault(p => p.Id == id);
 
