@@ -15,6 +15,9 @@ try
 {
     var context = builder.Services.BuildServiceProvider().GetRequiredService<PropertyContext>();
     context.Database.Migrate();
+
+    PropertySeedData.Seed(context);
+
 }
 catch (Exception e)
 {
