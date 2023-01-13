@@ -35,7 +35,7 @@ namespace PropertyManager.API.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=PropertyManager;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\\mssqllocaldb;Database=PropertyManager;Trusted_Connection=True;MultipleActiveResultSets=true");
         }
 
 
