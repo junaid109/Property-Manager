@@ -6,7 +6,24 @@ namespace PropertyManager.API.Data
     {
         public static void Seed(PropertyContext context)
         {
-            if (!context.PropertyTypes.Any())
+			if (!context.Properties.Any())
+			{
+                context.Properties.AddRange(
+					new Property { Name = "Property 1", Address = "123 Main St", City = "Seattle", State = "WA", Zip = "98101", Country = "USA", Description = "Property 1 Description", Image = "https://via.placeholder.com/150", ImageThumbnail = "https://via.placeholder.com/150", IsRental = true },
+					new Property { Name = "Property 2", Address = "123 Main St", City = "Seattle", State = "WA", Zip = "98101", Country = "USA", Description = "Property 2 Description", Image = "https://via.placeholder.com/150", ImageThumbnail = "https://via.placeholder.com/150", IsRental = true },
+					new Property { Name = "Property 3", Address = "123 Main St", City = "Seattle", State = "WA", Zip = "98101", Country = "USA", Description = "Property 3 Description", Image = "https://via.placeholder.com/150", ImageThumbnail = "https://via.placeholder.com/150", IsRental = true },
+					new Property { Name = "Property 4", Address = "123 Main St", City = "Seattle", State = "WA", Zip = "98101", Country = "USA", Description = "Property 4 Description", Image = "https://via.placeholder.com/150", ImageThumbnail = "https://via.placeholder.com/150", IsRental = true },
+					new Property { Name = "Property 5", Address = "123 Main St", City = "Seattle", State = "WA", Zip = "98101", Country = "USA", Description = "Property 5 Description", Image = "https://via.placeholder.com/150", ImageThumbnail = "https://via.placeholder.com/150", IsRental = true },
+					new Property { Name = "Property 6", Address = "123 Main St", City = "Seattle", State = "WA", Zip = "98101", Country = "USA", Description = "Property 6 Description", Image = "https://via.placeholder.com/150", ImageThumbnail = "https://via.placeholder.com/150", IsRental = true },
+					new Property { Name = "Property 7", Address = "123 Main St", City = "Seattle", State = "WA", Zip = "98101", Country = "USA", Description = "Property 7 Description", Image = "https://via.placeholder.com/150", ImageThumbnail = "https://via.placeholder.com/150", IsRental = true },
+					new Property { Name = "Property 8", Address = "123 Main St", City = "Seattle", State = "WA", Zip = "98101", Country = "USA", Description = "Property 8 Description", Image = "https://via.placeholder.com/150", ImageThumbnail = "https://via.placeholder.com/150", IsRental = true },
+					new Property { Name = "Property 9", Address = "123 Main St", City = "Seattle", State = "WA", Zip = "98101", Country = "USA", Description = "Property 9 Description", Image = "https://via.placeholder.com/150", ImageThumbnail = "https://via.placeholder.com/150", IsRental = true },
+					new Property { Name = "Property 10", Address = "123 Main St", City = "Seattle", State = "WA", Zip = "98101", Country = "USA", Description = "Property 10 Description", Image = "https://via.placeholder.com/150", ImageThumbnail = "https://via.placeholder.com/150", IsRental = true }
+					);
+				context.SaveChanges();
+			}
+
+				if (!context.PropertyTypes.Any())
             {
                 context.PropertyTypes.AddRange(
                     new PropertyType { Name = "Single Family" },
