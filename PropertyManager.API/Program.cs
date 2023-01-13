@@ -1,11 +1,22 @@
 using Microsoft.EntityFrameworkCore;
 using PropertyManager.API.Data;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Add services to the container
 
-builder.Services.AddControllers();
+// serilog config
+Log.Logger = new LoggerConfiguration()
+	.MinimumLevel.Debug()
+	.WriteTo.Console()
+	.WriteTo.File("logs\\log.txt", rollingInterval: RollingInterval.Day)
+	.CreateLogger();
+
+
+builder.Services.AddControllers(
+	//option => option.returnHttpNotAcceptable = true
+	);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -23,6 +34,8 @@ catch (Exception e)
 {
     Console.WriteLine("Error migrating database: " + e.Message);
 }
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 
