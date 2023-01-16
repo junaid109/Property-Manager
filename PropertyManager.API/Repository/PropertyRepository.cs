@@ -4,6 +4,7 @@ using PropertyManager.API.Entities;
 using Microsoft.EntityFrameworkCore;
 using PropertyManager.API.Models;
 using System.Linq.Expressions;
+using System.Linq;
 
 namespace PropertyManager.API.Repository
 {
@@ -34,34 +35,33 @@ namespace PropertyManager.API.Repository
 
 		public IEnumerable<Property> GetAllProperties(Expression<Func<Property>> filter = null)
 		{
-			if (filter == null)
+			IQueryable<Property> query = _context.Properties;
+			
+			if(filter != null)
 			{
-				return _context.Properties.ToList();
+				//query = query.Where(filter);
 			}
-			else
-			{
-				return _context.Properties.Where(filter as Expression<Func<Property, bool>>).ToList();
-			}
+			return query.ToList();
 		}
 
-		public Property GetPropertyAsyn(Expression<Func<Property>> filter = null, bool tracked = false)
-		{
-			if (filter == null)
-			{
-				return _context.Properties.FirstOrDefault();
-			}
-			else
-			{
-				if (tracked)
-				{
-					return _context.Properties.FirstOrDefault(filter as Expression<Func<Property, bool>>);
-				}
-				else
-				{
-					return _context.Properties.AsNoTracking().FirstOrDefault(filter as Expression<Func<Property, bool>>);
-				}
-			}
-		}
+		//public Property GetProperty(Expression<Func<Property>>? filter = null, bool tracked = false)
+		//{
+		//	if (filter == null)
+		//	{
+		//		return _context.Properties.FirstOrDefault();
+		//	}
+		//	else
+		//	{
+		//		if (tracked)
+		//		{
+		//			//return _context.Properties.FirstOrDefault(filter as Expression<Func<Property, bool>>);
+		//		}
+		//		else
+		//		{
+		//			//return _context.Properties.AsNoTracking().FirstOrDefault(filter as Expression<Func<Property, bool>>);
+		//		}
+		//	}
+		//}
 
 		public Property GetPropertyById(int id)
 		{

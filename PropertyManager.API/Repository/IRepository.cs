@@ -7,7 +7,7 @@ namespace PropertyManager.API.Repository
 	{
 		// Get all properties
 		IEnumerable<Property> GetAllProperties(Expression<Func<Property>> filter = null);
-		Property GetPropertyAsyn(Expression<Func<Property>> filter = null, bool tracked = false);
+		//Property GetProperty(Expression<Func<Property>> filter = null, bool tracked = false);
 
 		// Get property by id
 		Property GetPropertyById(int id);
