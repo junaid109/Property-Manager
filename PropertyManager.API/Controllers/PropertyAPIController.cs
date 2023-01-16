@@ -13,12 +13,14 @@ namespace PropertyManager.API.Controllers
         private readonly PropertyContext _context;
         private ILogger logger;
         private readonly IMapper _mapper;
+		protected readonly ApiResponse _apiResponse;
 
-        public PropertyAPIController(PropertyContext context, ILogger<PropertyAPIController> logger, IMapper mapper)
-        {
-            _context = context;
-            this.logger = logger;
-            this.mapper = mapper;
+		public PropertyAPIController(PropertyContext context, ILogger<PropertyAPIController> logger, IMapper mapper, ApiResponse apiResponse)
+		{
+			_context = context;
+			this.logger = logger;
+			_mapper = mapper;
+			_apiResponse = apiResponse;
         }
 
 
@@ -42,8 +44,8 @@ namespace PropertyManager.API.Controllers
                 return NotFound();
             }
 
-            return Ok(_mapper.Map<PropertyDTO>);
-        }
+			return Ok(_mapper.Map<PropertyDTO>(property));
+		}
 
         [HttpPost]
         [ProducesResponseType(201)]
